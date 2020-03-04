@@ -17,24 +17,26 @@ public class CubeEditor: MonoBehaviour
     void Update()
     {
         SnapToGrid();
-
         UpdateLabel();
     }
 
 
     private void SnapToGrid()
     {
-        int GRID_SIZE = waypoint.GetGridSize();
-        int x = waypoint.GetGridPos().x;
-        int z = waypoint.GetGridPos().y;
+        int gridSize = waypoint.GetGridSize();
+        int x = waypoint.GetGridPos().x * gridSize;
+        int z = waypoint.GetGridPos().y * gridSize;
     
         transform.position = new Vector3(x, 0.0f, z);
     }
     private void UpdateLabel()
     {
         int GRID_SIZE = waypoint.GetGridSize();
-        string labelText = waypoint.GetGridPos().x / GRID_SIZE + "," + waypoint.GetGridPos().y / GRID_SIZE;
-        label.text = labelText;
-        gameObject.name = "Cube: " + labelText;
+        string labelText = waypoint.GetGridPos().x + "," + waypoint.GetGridPos().y;
+        if (label)
+        {
+            label.text = labelText;
+            gameObject.name = "Cube: " + labelText;
+        }
     }
 }
