@@ -18,7 +18,8 @@ public class EnemyMovement : MonoBehaviour
     {
         foreach (Waypoint waypoint in path)
         {
-            transform.position = waypoint.transform.position;
+            var newPos = waypoint.transform.position;
+            transform.position = new Vector3(newPos.x, 20, newPos.z);
             yield return new WaitForSeconds(waitTime);
         }
     }
