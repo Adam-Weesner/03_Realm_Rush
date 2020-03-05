@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private ParticleSystem hitParticles = null;
     [SerializeField] private ParticleSystem deathParticles = null;
     [SerializeField] private ParticleSystem explodeParticles = null;
+    [SerializeField] private AudioClip hitSFX;
+    [SerializeField] private AudioClip deathSFX;
     [HideInInspector] public Transform particlesParent;
 
     private void OnParticleCollision(GameObject other)
@@ -21,20 +23,26 @@ public class EnemyController : MonoBehaviour
         else
         {
             hitParticles.Play();
+            AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position);
         }
     }
 
     private void OnDeath()
     {
         var vfx = Instantiate(deathParticles, gameObject.transform);
-        vfx.transform.SetParent(particlesParent);
-        Destroy(gameObject);
+        DestroyEnemy(vfx);
     }
 
     public void OnExplode()
     {
         var vfx = Instantiate(explodeParticles, gameObject.transform);
+        DestroyEnemy(vfx);
+    }
+
+    private void DestroyEnemy(ParticleSystem vfx)
+    {
         vfx.transform.SetParent(particlesParent);
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position);
         Destroy(gameObject);
     }
 }

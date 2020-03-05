@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private EnemyController enemyPrefab = null;
     [SerializeField] private Transform enemyParent;
     [SerializeField] private Transform particlesParent;
+    [SerializeField] private AudioClip spawnSFX;
     private bool isSpawning = true;
     private int numEnemies = 0;
 
@@ -29,6 +30,7 @@ public class EnemySpawner : MonoBehaviour
             newEnemy.particlesParent = particlesParent;
             numEnemies++;
             onEnemySpawn.Invoke(numEnemies);
+            GetComponent<AudioSource>().PlayOneShot(spawnSFX);
         }
     }
 }

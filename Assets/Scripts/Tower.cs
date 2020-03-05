@@ -8,6 +8,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private Transform objectToPan = null;
     [SerializeField] private ParticleSystem bullets = null;
     [SerializeField] [Range(0, 500)] private int attackRange = 50;
+    [SerializeField] private AudioClip shootSFX;
     [HideInInspector] public Waypoint baseWaypoint;
     private Transform targetEnemy = null;
     private ParticleSystem.EmissionModule emission;

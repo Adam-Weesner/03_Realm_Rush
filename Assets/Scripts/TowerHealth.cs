@@ -6,7 +6,7 @@ public class TowerHealth : MonoBehaviour
 {
     public delegate void OnHealthChange(int health);
     public OnHealthChange onHealthChange;
-
+    [SerializeField] private AudioClip damageSFX;
     [SerializeField] [Range(1, 500)] private int health = 50;
 
     private void Start()
@@ -23,5 +23,7 @@ public class TowerHealth : MonoBehaviour
         health -= enemy.damage;
 
         onHealthChange.Invoke(health);
+
+        GetComponent<AudioSource>().PlayOneShot(damageSFX);
     }
 }
