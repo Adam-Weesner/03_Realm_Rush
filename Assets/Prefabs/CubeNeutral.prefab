@@ -153,9 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2000d753de54b4eafc8f77241135f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlaceable: 1
-  towerPrefab: {fileID: 3951693138283769837, guid: 511b59730e189124a8f758da7e165e27,
-    type: 3}
+  isPlaceable: 0
+  isCrossable: 0
   isExplored: 0
   exploredFrom: {fileID: 0}
 --- !u!65 &779382870450391683

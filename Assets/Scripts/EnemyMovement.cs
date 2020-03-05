@@ -29,5 +29,13 @@ public class EnemyMovement : MonoBehaviour
             
             yield return new WaitForSeconds(waitTime);
         }
+            
+        StartCoroutine(SelfDestruct());
+    }
+
+    private IEnumerator SelfDestruct()
+    {
+        yield return new WaitForSeconds(1.0f);
+        GetComponent<EnemyController>().OnExplode();
     }
 }

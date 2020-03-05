@@ -6,6 +6,7 @@ using UnityEngine;
 public class Waypoint : MonoBehaviour
 {
     public bool isPlaceable = true;
+    public bool isCrossable = true;
     [HideInInspector] public bool isExplored = false;
     [HideInInspector] public Waypoint exploredFrom;
     private Vector2Int gridPos;

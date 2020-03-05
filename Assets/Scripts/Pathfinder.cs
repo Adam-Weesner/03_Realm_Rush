@@ -100,7 +100,7 @@ public class Pathfinder : MonoBehaviour
             {
                 Debug.LogWarning("Overlapping block at: " + waypoint.GetGridPos());
             }
-            else
+            else if (waypoint.isCrossable)
             {
                 grid.Add(waypoint.GetGridPos(), waypoint);
             }
