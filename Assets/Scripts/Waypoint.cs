@@ -6,7 +6,6 @@ using UnityEngine;
 public class Waypoint : MonoBehaviour
 {
     public bool isPlaceable = true;
-    [SerializeField] private Tower towerPrefab = null;
     [HideInInspector] public bool isExplored = false;
     [HideInInspector] public Waypoint exploredFrom;
     private Vector2Int gridPos;
@@ -28,19 +27,11 @@ public class Waypoint : MonoBehaviour
     {
         if (isPlaceable)
         {
-            PlaceTower();
+            FindObjectOfType<TowerFactory>().AddTower(this);
         }
         else
         {
             print("Can't place here.");
         }
-    }
-
-    private void PlaceTower()
-    {
-        var newTower = Instantiate(towerPrefab, gameObject.transform);
-        newTower.transform.position = new Vector3(newTower.transform.position.x, 20, newTower.transform.position.z);
-        newTower.transform.SetParent(GameObject.Find("Towers").transform);
-        isPlaceable = false;
     }
 }

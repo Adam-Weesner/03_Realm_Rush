@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] [Range(1, 100)] private int health = 5;
     [SerializeField] private ParticleSystem hitParticles = null;
     [SerializeField] private ParticleSystem deathParticles = null;
+    [HideInInspector] public Transform particlesParent;
 
     private void OnParticleCollision(GameObject other)
     {
@@ -24,7 +25,7 @@ public class EnemyController : MonoBehaviour
     private void OnDeath()
     {
         var vfx = Instantiate(deathParticles, gameObject.transform);
-        vfx.transform.SetParent(gameObject.transform.parent);
+        vfx.transform.SetParent(particlesParent);
         Destroy(gameObject);
     }
 }

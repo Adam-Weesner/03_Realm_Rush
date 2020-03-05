@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float waitTime = 1.0f;
+    private Vector3 nextWaypointPos;
 
     private void Start()
     {
@@ -14,12 +15,18 @@ public class EnemyMovement : MonoBehaviour
         StartCoroutine(FollowPath(path));
     }
 
+    private void Update()
+    {
+        transform.position = Vector3.Lerp(transform.position, nextWaypointPos, Time.deltaTime);
+    }
+
     private IEnumerator FollowPath(List<Waypoint> path)
     {
         foreach (Waypoint waypoint in path)
         {
             var newPos = waypoint.transform.position;
-            transform.position = new Vector3(newPos.x, 20, newPos.z);
+            nextWaypointPos = new Vector3(newPos.x, 20, newPos.z);
+            
             yield return new WaitForSeconds(waitTime);
         }
     }
