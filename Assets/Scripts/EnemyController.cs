@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] [Range(1, 100)] private int health = 5;
+    [SerializeField] private ParticleSystem hitParticles = null;
+    [SerializeField] private ParticleSystem deathParticles = null;
 
     private void OnParticleCollision(GameObject other)
     {
@@ -12,11 +14,17 @@ public class EnemyController : MonoBehaviour
         if (health <= 0)
         {
             OnDeath();
+        } 
+        else
+        {
+            hitParticles.Play();
         }
     }
 
     private void OnDeath()
     {
+        var vfx = Instantiate(deathParticles, gameObject.transform);
+        vfx.transform.SetParent(gameObject.transform.parent);
         Destroy(gameObject);
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6605645862816273282}
   - component: {fileID: 7744640831013027333}
   - component: {fileID: 6639083433947982474}
+  - component: {fileID: 2685711654316689926}
   m_Layer: 0
   m_Name: CubeFriendly
   m_TagString: Untagged
@@ -59,8 +60,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2000d753de54b4eafc8f77241135f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlaceable: 1
+  towerPrefab: {fileID: 3951693138283769837, guid: 511b59730e189124a8f758da7e165e27,
+    type: 3}
   isExplored: 0
   exploredFrom: {fileID: 0}
+--- !u!65 &2685711654316689926
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262434342766142033}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20, y: 20, z: 20}
+  m_Center: {x: 0, y: 10.07, z: 0}
 --- !u!1 &4921266968588686674
 GameObject:
   m_ObjectHideFlags: 0
